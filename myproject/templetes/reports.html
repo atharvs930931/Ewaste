@@ -1,0 +1,92 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Reports</title>
+
+<link rel="stylesheet" href="{% static 'css/reports.css' %}">
+
+</head>
+
+<body>
+
+    <form method="POST" action="{% url 'logout' %}" class="logout-form">
+        {% csrf_token %}
+        <button type="submit" class="logout-btn">Back</button>
+    </form>
+
+<div class="container">
+
+<h1>E-Waste Reports</h1>
+
+<form method="get">
+
+<label>Select Month</label>
+
+<input type="month" name="month">
+
+<button type="submit">Get Report</button>
+
+</form>
+
+
+<form method="get">
+
+<label>Select Week</label>
+
+<input type="week" name="week">
+
+<button type="submit">Get Report</button>
+
+</form>
+
+
+<form method="get">
+
+<label>Select Day</label>
+
+<input type="date" name="day">
+
+<button type="submit">Get Report</button>
+
+</form>
+
+
+<div class="report-box">
+
+<h2>Report</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>{{ data.submitted }}</h3>
+<p>E-Waste Submitted</p>
+</div>
+
+<div class="card">
+<h3>{{ data.accepted }}</h3>
+<p>E-Waste Accepted</p>
+</div>
+
+<div class="card">
+<h3>{{ data.picked }}</h3>
+<p>E-Waste Picked</p>
+</div>
+
+<div class="card">
+<h3>{{ data.completed }}</h3>
+<p>Recycle Completed</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4fdf4;
+}
+/* HERO */
+.hero {
+    background: linear-gradient(to right, #2ecc71, #27ae60);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+.hero h1 {
+    font-size: 52px;
+}
+.hero p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+.btn {
+    background: white;
+    color: #27ae60;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+/* NAVBAR */
+.navbar {
+    background: #145a32;
+    padding: 12px;
+    text-align: center;
+}
+.navbar a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 15px;
+}
+/* ACTIVE HOME MENU */
+.navbar a.active {
+    background: #27ae60;
+    border-radius: 20px;
+}
+/* WELCOME */
+.welcome {
+    text-align: center;
+    padding: 40px;
+}
+.welcome h2 {
+    font-size: 32px;
+    color: #145a32;
+}
+/* STATS */
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+}
+.box {
+    background: white;
+    padding: 25px;
+    width: 200px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.box h3 {
+    color: #27ae60;
+}
+/* OBJECTIVES */
+.objectives {
+    background: #e9f7ef;
+    padding: 40px;
+    text-align: center;
+}
+.objectives ul {
+    list-style: none;
+    padding: 0;
+}
+.objectives li {
+    font-size: 18px;
+    margin: 10px 0;
+}
+/* FOOTER */
+footer {
+    background: #145a32;
+    color: white;
+    text-align: center;
+    padding: 12px;
+}

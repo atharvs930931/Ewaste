@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>E-Waste Dashboard</title>
+
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+    <form method="POST" action="{% url 'logout' %}" class="logout-form">
+        {% csrf_token %}
+        <button type="submit" class="logout-btn">Back</button>
+    </form>
+
+<div class="container">
+
+<h1 class="title">E-Waste Reports Dashboard</h1>
+
+<div class="cards">
+
+<div class="card">
+<p>Total Requests</p>
+<h1 class="counter" data-target="{{ total_requests }}">0</h1>
+</div>
+
+<div class="card">
+<p>Accepted E-Waste</p>
+<h1 class="counter" data-target="{{ accepted }}">0</h1>
+</div>
+
+<div class="card">
+<p>Pending Requests</p>
+<h1 class="counter" data-target="{{ pending }}">0</h1>
+</div>
+
+<div class="card">
+<p>Completed Recycling</p>
+<h1 class="counter" data-target="{{ completed }}">0</h1>
+</div>
+
+</div>
+
+<div class="chart-section">
+
+<canvas id="categoryChart"></canvas>
+
+<canvas id="statusChart"></canvas>
+
+</div>
+
+</div>
+
+<script>
+
+const counters = document.querySelectorAll('.counter');
+
+counters.forEach(counter => {
+
+const updateCounter = () => {
+
+const target = +counter.getAttribute('data-target');
+const count = +counter.innerText;
+
+const increment = target / 80;
+
+if(count < target){
+
+counter.innerText = Math.ceil(count + increment);
+setTimeout(updateCounter,20);
+
+}else{
+
+counter.innerText = target;
+
+}
+
+}
+
+updateCounter();
+
+});
+
+
+var categoryLabels = {{ labels|safe }};
+var categoryData = {{ data|safe }};
+
+new Chart(document.getElementById('categoryChart'),{
+
+type:'pie',
+
+data:{
+labels:categoryLabels,
+datasets:[{
+data:categoryData,
+backgroundColor:[
+'#2ecc71',
+'#27ae60',
+'#1abc9c',
+'#16a085',
+'#a3e635'
+]
+}]
+}
+
+});
+
+
+new Chart(document.getElementById('statusChart'),{
+
+type:'bar',
+
+data:{
+labels:['Pending','Accepted','Completed'],
+datasets:[{
+data:[{{ pending }},{{ accepted }},{{ completed }}],
+backgroundColor:[
+'#f39c12',
+'#3498db',
+'#2ecc71'
+]
+}]
+}
+
+});
+
+</script>
+
+</body>
+</html>

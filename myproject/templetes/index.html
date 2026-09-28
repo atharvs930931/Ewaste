@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>E-Waste Portal</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <h1>E-Waste Portal</h1>
+    <p>Recycle responsibly and protect the environment with our dynamic platform.</p>
+    <a href="{% url 'register' %}">
+        <button class="btn">Get Started</button>
+    </a>
+
+</section>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <a href="/" class="active">Home</a>
+    <a href="/register/">Register</a>
+    <a href="/login/">Login</a>
+    <a href="/dashboard/">Dashboard</a>
+    <a href="about">About Us</a>
+    <a href="/reports/">Reports</a>
+</nav>
+
+<!-- WELCOME -->
+<section class="welcome">
+    <h2>Welcome to E-Waste Management</h2>
+    <p>Our platform connects users with recyclers for eco-friendly disposal.</p>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+    <div class="box">
+        <h3>Total Collected</h3>
+        <p id="collected">0 kg</p>
+    </div>
+    <div class="box">
+        <h3>Recycled</h3>
+        <p id="recycled">0 kg</p>
+    </div>
+    <div class="box">
+        <h3>Users</h3>
+        <p id="users">0</p>
+    </div>
+</section>
+
+<!-- OBJECTIVES -->
+<section class="objectives">
+    <h2>Our Objectives</h2>
+    <ul>
+        <li>Digital platform for e-waste collection.</li>
+        <li>Connect users and recyclers.</li>
+        <li>Reduce pollution and raise awareness.</li>
+    </ul>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 E-Waste Management Portal |  Building a Cleaner & Greener Future</p>
+</footer>
+
+<script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>

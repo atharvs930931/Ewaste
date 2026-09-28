@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Status Tracking</title>
+    <link rel="stylesheet" href="{% static 'css/status_tracking.css' %}">
+</head>
+<body>
+
+    <form method="POST" action="{% url 'logout' %}" class="logout-form">
+        {% csrf_token %}
+        <button type="submit" class="logout-btn">Logout</button>
+    </form>
+
+<h2>My E-Waste Status</h2>
+
+{% if ewaste_list %}
+    {% for item in ewaste_list %}
+    <div class="card">
+        <img src="{{ item.photo.url }}" alt="E-Waste Photo">
+
+        <p><b>Category:</b> {{ item.category }}</p>
+        <p><b>Condition:</b> {{ item.condition }}</p>
+        <p><b>Weight:</b> {{ item.weight }} kg</p>
+        <p><b>Location:</b> {{ item.location }}</p>
+        <p><b>Submitted On:</b> {{ item.created_at }}</p>
+
+        <p class="status {{ item.status }}">
+            <b>Status:</b> {{ item.status|title }}
+        </p>
+    </div>
+    {% endfor %}
+{% else %}
+    <p>You have not submitted any E-Waste yet.</p>
+{% endif %}
+
+</body>
+</html>

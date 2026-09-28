@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recycler Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/accept_ewaste.css' %}">
+</head>
+<body>
+
+    <form method="POST" action="{% url 'logout' %}" class="logout-form">
+        {% csrf_token %}
+        <button type="submit" class="logout-btn">Logout</button>
+    </form>
+
+<h2>Recycler Dashboard</h2>
+
+<!-- PENDING -->
+<h3>🟡 Pending Requests</h3>
+{% for item in pending %}
+<div class="card">
+    <img src="{{ item.photo.url }}" width="200">
+    <p><b>Category:</b> {{ item.category }}</p>
+    <p><b>Weight:</b> {{ item.weight }} kg</p>
+    <p><b>Pickup:</b> {{ item.pickup_date }} | {{ item.pickup_time_slot }}</p>
+    <p class="pending">Status: Pending</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="ewaste_id" value="{{ item.id }}">
+        <input type="hidden" name="action" value="accept">
+        <button type="submit" class="accept-btn">Accept</button>
+    </form>
+</div>
+{% empty %}
+<p>No Pending Requests</p>
+{% endfor %}
+
+<hr>
+
+<!-- ACCEPTED -->
+<h3>🔵 Accepted Requests</h3>
+{% for item in accepted %}
+<div class="card">
+    <img src="{{ item.photo.url }}" width="200">
+    <p><b>Category:</b> {{ item.category }}</p>
+    <p><b>Pickup:</b> {{ item.pickup_date }} | {{ item.pickup_time_slot }}</p>
+    <p class="accepted">Status: Accepted</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="ewaste_id" value="{{ item.id }}">
+        <input type="hidden" name="action" value="picked">
+        <button type="submit" class="picked-btn">Mark as Picked</button>
+    </form>
+</div>
+{% empty %}
+<p>No Accepted Requests</p>
+{% endfor %}
+
+<hr>
+
+<!-- PICKED -->
+<h3>🚚 Picked Requests</h3>
+{% for item in picked %}
+<div class="card">
+    <img src="{{ item.photo.url }}" width="200">
+    <p><b>Category:</b> {{ item.category }}</p>
+    <p class="picked">Status: Picked</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="ewaste_id" value="{{ item.id }}">
+        <input type="hidden" name="action" value="complete">
+        <button type="submit" class="complete-btn">Mark as Completed</button>
+    </form>
+</div>
+{% empty %}
+<p>No Picked Requests</p>
+{% endfor %}
+
+<hr>
+
+<!-- COMPLETED -->
+<h3>🟢 Completed Requests</h3>
+{% for item in completed %}
+<div class="card">
+    <img src="{{ item.photo.url }}" width="200">
+    <p><b>Category:</b> {{ item.category }}</p>
+    <p class="completed">Status: Completed</p>
+</div>
+{% empty %}
+<p>No Completed Requests</p>
+{% endfor %}
+
+</body>
+</html>

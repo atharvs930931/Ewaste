@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | E-Waste Portal</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Login</h2>
+
+
+    {% if messages %}
+       {% for message in messages %}
+        <p style="color:red;">{{ message }}</p>
+       {% endfor %}
+    {% endif %}
+
+    <!-- IMPORTANT: method + csrf -->
+    <form method="POST">
+        {% csrf_token %}
+
+        <!-- Role future use sathi -->
+        <select name="role" required>
+            <option value="">Select Role</option>
+            <option value="user">User</option>
+            <option value="recycler">Recycler</option>
+            <option value="admin">Admin</option>
+        </select>
+
+        <!-- Django auth uses username OR email  -->
+        <input type="text" name="username" placeholder="Username" required>
+
+        <input type="password" name="password" placeholder="Password" required>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p class="register-text">
+        Not registered?
+        <a href="{% url 'register' %}">Register here</a>
+    </p>
+</div>
+
+</body>
+</html>

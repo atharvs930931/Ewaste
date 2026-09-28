@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e9f5ee, #f4f7f9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Form Box */
+.form-container {
+    width: 420px;
+    background: #ffffff;
+    padding: 32px 30px;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    animation: fadeIn 0.6s ease-in-out;
+    transition: transform 0.3s ease;
+}
+
+.form-container:hover {
+    transform: translateY(-3px);
+}
+
+/* Heading */
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 22px;
+    color: #2c3e50;
+    letter-spacing: 0.5px;
+}
+
+/* Messages */
+.msg {
+    background: #eafaf1;
+    color: #2e7d32;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 14px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Labels */
+.form-container label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #34495e;
+    font-size: 14px;
+}
+
+/* Inputs & Select */
+.form-container input,
+.form-container select {
+    width: 100%;
+    padding: 11px 12px;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background: #fafafa;
+}
+
+.form-container input:focus,
+.form-container select:focus {
+    outline: none;
+    border-color: #27ae60;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.15);
+}
+
+/* File input fix */
+.form-container input[type="file"] {
+    padding: 8px;
+    background: #ffffff;
+}
+
+/* Submit Button */
+.form-container button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #27ae60, #2ecc71);
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-container button:hover {
+    background: linear-gradient(90deg, #219150, #27ae60);
+    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+}
+
+.form-container button:active {
+    transform: scale(0.97);
+}
+
+/* 🔍 Track Status Button */
+.track-btn {
+    margin-top: 18px;
+    text-align: center;
+}
+
+.track-btn button {
+    background: linear-gradient(90deg, #2980b9, #3498db);
+    font-size: 15px;
+}
+
+.track-btn button:hover {
+    background: linear-gradient(90deg, #21618c, #2e86c1);
+    box-shadow: 0 5px 15px rgba(41, 128, 185, 0.3);
+}
+
+/* Logout */
+.logout-form {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+}
+
+.logout-btn {
+    background-color: #c0392b;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #a93226;
+    box-shadow: 0 3px 10px rgba(192, 57, 43, 0.3);
+}
+
+/* Smooth Fade Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

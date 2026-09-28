@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit E-Waste</title>
+    <link rel="stylesheet" href="{% static 'css/submit_ewaste.css' %}">
+</head>
+<body>
+
+    <!-- Logout Button -->
+    <form method="POST" action="{% url 'logout' %}" class="logout-form">
+        {% csrf_token %}
+        <button type="submit" class="logout-btn">Logout</button>
+    </form>
+
+<div class="form-container">
+    <h2>Submit E-Waste</h2>
+
+    {% for message in messages %}
+        <p class="msg">{{ message }}</p>
+    {% endfor %}
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- Category -->
+        <label>Category</label>
+        <select name="category" required>
+            <option value="">Select</option>
+            <option value="mobile">Mobile</option>
+            <option value="laptop">Laptop</option>
+            <option value="tv">TV</option>
+            <option value="battery">Battery</option>
+            <option value="other">Other</option>
+        </select>
+
+        <!-- Condition -->
+        <label>Condition</label>
+        <select name="condition" required>
+            <option value="">Select</option>
+            <option value="working">Working</option>
+            <option value="broken">Broken</option>
+        </select>
+
+        <!-- Weight -->
+        <label>Weight (kg)</label>
+        <input type="number" step="0.1" name="weight" required>
+
+        <!-- Photo -->
+        <label>Upload Photo</label>
+        <input type="file" name="photo" required>
+
+        <!-- Location -->
+        <label>Location</label>
+        <input type="text" name="location" placeholder="Enter pickup location" required>
+
+        <!-- NEW: Pickup Date -->
+        <label>Pickup Date</label>
+        <input type="date" name="pickup_date" min="{{ today }}" required>
+
+        <!-- NEW: Pickup Time Slot -->
+        <label>Pickup Time Slot</label>
+        <select name="pickup_time_slot" required>
+            <option value="">Select Time Slot</option>
+            <option value="10-12">10 AM - 12 PM</option>
+            <option value="12-2">12 PM - 2 PM</option>
+            <option value="2-4">2 PM - 4 PM</option>
+            <option value="4-6">4 PM - 6 PM</option>
+        </select>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Track Status Button -->
+    <div class="track-btn">
+        <a href="{% url 'status_tracking' %}">
+            <button type="button">Track My E-Waste Status</button>
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>
